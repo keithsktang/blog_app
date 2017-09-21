@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'test/index'
+  get '25/index'
 
   get 'welcome/index'
 

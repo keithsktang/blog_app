@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
   def index
     @articles = Article.all
     @article = Article.new
@@ -8,7 +10,9 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
   end
-
+def verify
+@product = {"id": 1, "name": "product"}
+end
   def new
     @article = Article.new
   end
@@ -18,13 +22,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-
-    if @article.save
-      redirect_to 'index'
-    else
-      render 'new'
-    end
+    render html:"<script>alert('whazuup')</script>".html_safe
+    puts "something"
+    # @article = Article.new(article_params)
+    #
+    # if @article.save
+    #   redirect_to 'index'
+    # else
+    #   render 'new'
+    # end
   end
 
   def update

@@ -7,6 +7,30 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
+<ul>
+<% @article.comments.each do |comment| %>
+<li><%= comment.body %> <%= comment.commenter %></li>
+<% end %>
+</ul>
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 
-<div><%= link_to 'All Articles', articles_path %></div>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+<%= form_with scope: articles, url: "show/verify" do |form| %>
+<%= @product %>
+<%= submit_tag %>
+<% end %>
   <!-- <div><%= link_to 'Change', edit_article_path(@article) %></div> -->
